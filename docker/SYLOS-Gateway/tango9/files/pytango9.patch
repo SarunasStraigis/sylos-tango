@@ -1,0 +1,11 @@
+--- /usr/local/lib/python3.5/dist-packages/tango/server.py	2017-01-09 13:45:10.000000000 +0000
++++ eli-alps-cc/server.py	2017-01-12 12:30:29.849369701 +0000
+@@ -647,7 +647,7 @@
+             for prop_name in self.device_property_list:
+                 value = self.prop_util.get_property_values(prop_name,
+                                                            self.device_property_list)
+-                self._tango_properties[prop_name] = value
++                setattr(self, prop_name, self.prop_util.get_property_values(prop_name, self.device_property_list))
+         except DevFailed as df:
+             print(80*"-")
+             print(df)

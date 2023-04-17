@@ -1,0 +1,40 @@
+my dev scripts.
+I had issues with permissions on linux, with sporadic exceptions when trying to initialize tango db (01-init.sh) so I added quite random steps to prepare permissions which solved these things for now.
+
+************************HOST*******************
+cd ~/ELI
+docker kill tango9
+sudo rm -r -f tango-gateway-framework/
+git clone git@bitbucket.org:sylostango/tango-gateway-framework.git
+
+cd tango-gateway-framework/
+sudo sh ./0x-prepare-permissions.sh
+cd docker/SYLOS-Gateway/tango9
+make remove
+make image
+make HOST=$(hostname --short) container
+docker exec -it tango9 bash
+
+**********************CLIENT***********************
+cd ~/ELI
+sudo rm -r -f tango-gateway-framework/
+sudo git clone  https://DomasM@bitbucket.org/sylostango/tango-gateway-framework.git
+
+
+
+cd ELI
+cd tango-gateway-framework/
+sh ./0x-prepare-permissions.sh
+sudo !!
+./0x-prepare-permissions.sh
+sudo !!
+./01-init.sh
+./03-start-gateway.sh
+
+
+
+docker exec -it tango9 bash
+cd ~/ELI/tango-gateway-framework/
+./04-start-client.sh
+
+

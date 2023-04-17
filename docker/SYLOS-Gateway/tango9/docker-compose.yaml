@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  tango-gateway-framework:
+    image: tango9
+    build:
+      context: .
+    environment:
+      TANGO_HOST: ${HOSTNAME}:10000
+      PYTHONPATH: /home/tangouser/ELI/tango-gateway-framework
+    volumes:
+    - ${HOME}/ELI:/home/tangouser/ELI
+    networks:
+    - host
+
+networks:
+  host:
+    external:
+      name: host

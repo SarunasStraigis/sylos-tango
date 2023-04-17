@@ -1,0 +1,1 @@
+docker run -it --rm -e PYTHONPATH=/home/tangouser/tango-gateway-framework/src -e DISPLAY=unix:1 -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/gnyiri/data/dev/tango-gateway-framework/:/home/tangouser/tango-gateway-framework srvvm-aptcache:5000/eliplains/tango9:hills bash

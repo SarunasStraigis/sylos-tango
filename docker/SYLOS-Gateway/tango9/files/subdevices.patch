@@ -1,0 +1,4 @@
+646c646
+<                 self._tango_properties[prop_name] = value
+---
+>                 setattr(self, prop_name, value)
